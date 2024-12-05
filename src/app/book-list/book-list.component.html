@@ -1,0 +1,36 @@
+<div>
+    <label for="cat">Filtrer par catégorie :</label>
+    <select id="cat" [(ngModel)]="cat" (change)="filter()">
+      <option value="Toutes">Toutes</option>
+      <option value="roman">Roman</option>
+      <option value="science">Science</option>
+      <option value="philosophie">Philosophie</option>
+    </select>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Catégorie</th>
+        <th>Prix (€)</th>
+        <th>Quantité</th>
+        <th>Disponibilité</th>
+        <th>Date de Publication</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of fBks" [ngClass]="getRowColor(book)">
+        <td [ngClass]="book.dispo ? 'none' : 'line-through'">
+          {{ book.titre }}
+        </td>
+        <td>{{ book.auteur }}</td>
+        <td>{{ book.categorie }}</td>
+        <td>{{ book.prix }}</td>
+        <td>{{ book.qte }}</td>
+        <td>{{ book.dispo ? 'Disponible' : 'Non disponible' }}</td>
+        <td>{{ book.datePublication }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
